@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Newsletter Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #4f46e5;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            color: #4f46e5;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .action-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .action-btn.secondary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .action-btn.secondary:hover {
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .recent-newsletters {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .recent-newsletters h2 {
+            color: #4f46e5;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .newsletter-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .newsletter-item:last-child {
+            border-bottom: none;
+        }
+
+        .newsletter-date {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .newsletter-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-actions a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border: 1px solid #4f46e5;
+            border-radius: 5px;
+            transition: background 0.2s ease;
+        }
+
+        .newsletter-actions a:hover {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #718096;
+            font-style: italic;
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI/Data Daily Briefing</h1>
+            <p>Your personal daily digest of what's happening in Artificial Intelligence, Machine Learning, and Data Science</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>20+</h3>
+                <p>Daily Articles from Top Sources</p>
+            </div>
+            <div class="stat-card">
+                <h3>6</h3>
+                <p>Content Categories</p>
+            </div>
+            <div class="stat-card">
+                <h3>7</h3>
+                <p>Premium Sources</p>
+            </div>
+            <div class="stat-card">
+                <h3>24/7</h3>
+                <p>Automated Delivery</p>
+            </div>
+        </div>
+
+        <div class="actions">
+            <div class="action-card">
+                <h3>Generate Newsletter</h3>
+                <p>Create today's ML newsletter with fresh articles</p>
+                <a href="/generate" class="action-btn">Generate Now</a>
+            </div>
+            <div class="action-card">
+                <h3>Send Newsletter</h3>
+                <p>Send the generated newsletter to subscribers</p>
+                <form action="/send" method="post" style="display: inline;">
+                    <button type="submit" class="action-btn secondary">Send Email</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="recent-newsletters">
+            <h2>Recent Newsletters</h2>
+            {% if newsletters %}
+                {% for newsletter in newsletters %}
+                <div class="newsletter-item">
+                    <div class="newsletter-date">{{ newsletter.date.strftime('%B %d, %Y') }}</div>
+                    <div class="newsletter-actions">
+                        <a href="/newsletter/{{ newsletter.id }}">View</a>
+                        <a href="/newsletter/{{ newsletter.id }}/edit">Edit</a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <p>No newsletters generated yet. Click "Generate Now" to create your first newsletter!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
